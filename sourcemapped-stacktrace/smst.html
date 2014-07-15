@@ -25,9 +25,9 @@
       try {
         runBork();
       } catch (e) {
-        document.getElementById("unmapped")[0].innerHTML = e.stack;
+        document.getElementById("unmapped").innerHTML = e.stack;
         mapStackTrace(e.stack, function(mappedStack) {
-          document.getElementById("mapped")[0].innerHTML =
+          document.getElementById("mapped").innerHTML =
             mappedStack;
         });
       }
