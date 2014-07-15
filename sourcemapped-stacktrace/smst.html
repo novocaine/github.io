@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript"
+  src="https://rawgithub.com/novocaine/sourcemapped-stacktrace/master/sourcemapped-stacktrace.js"></script>
+  <script type="text/javascript" src="bork-transpiled.js"></script>
+<body>
+  <p>A demo of printing a stack trace from an error thrown within transpiled code from traceur.</p>
+  <button type="button" onclick="errorAndPrint()">Throw error in sourcemapped
+    code</button>
+
+  <p>Stack trace:</p>
+
+  <pre>
+  </pre>
+
+  <script type="text/javascript">
+    var errorAndPrint = function() {
+      try {
+        runBork();
+      } catch (e) {
+        mapStackTrace(e.stack, function(mappedStack) {
+          document.getElementsByTagName("pre")[0].innerHTML =
+            mappedStack;
+        });
+      }
+    }
+  </script>
+</body>
+</html>
