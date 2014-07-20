@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<script type="text/javascript"
-  src="https://rawgithub.com/novocaine/sourcemapped-stacktrace/master/sourcemapped-stacktrace.js"></script>
   <!--<script type="text/javascript"
-    src="../../sourcemapped-stacktrace/sourcemapped-stacktrace.js"></script>-->
+  src="https://rawgithub.com/novocaine/sourcemapped-stacktrace/master/sourcemapped-stacktrace.js"></script>-->
+  <script type="text/javascript"
+    src="../../sourcemapped-stacktrace/dist/sourcemapped-stacktrace.js"></script>
   <script type="text/javascript" src="bork.coffee.js"></script>
 <body>
   <p>A demo of printing a stack trace from an error thrown within transpiled code from traceur.</p>
@@ -26,7 +26,7 @@
         bork();
       } catch (e) {
         document.getElementById("unmapped").innerHTML = e.stack;
-        mapStackTrace(e.stack, function(mappedStack) {
+        sourceMappedStackTrace.mapStackTrace(e.stack, function(mappedStack) {
           document.getElementById("mapped").innerHTML =
             mappedStack;
         });
