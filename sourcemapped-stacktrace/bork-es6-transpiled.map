@@ -1,1 +1,0 @@
-{"version":3,"sources":["http://novocaine.github.io/sourcemapped-stacktrace/bork.js"],"names":[],"mappings":"AAAA,QAAS,QAAO,CAAC,AAAiB,CAAE;KAAnB,IAAG,6CAAC,cAAa;CAChC,MAAM,IAAI,MAAK,CAAC,qCAAqC,CAAC,CAAC;CACxD;CAAA","sourcesContent":["function runBork(msg=\"default msg\") { \n  throw new Error(\"I have borked from transpiled code.\");\n}\n"]}
