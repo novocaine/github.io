@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "bork_coffee.js",
+  "sourceRoot": "",
+  "sources": [
+    "bork_coffee.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,YAAA;;AAAA,EAAM;8BACJ;;AAAA,2BAAA,IAAA,GAAM,SAAA,GAAA;AACJ,YAAU,IAAA,KAAA,CAAM,wBAAN,CAAV,CADI;IAAA,CAAN,CAAA;;wBAAA;;MADF,CAAA;;AAAA,EAIA,MAAM,CAAC,WAAP,GAAqB,SAAA,GAAA;WAAU,IAAA,YAAA,CAAA,CAAc,CAAC,IAAf,CAAA,EAAV;EAAA,CAJrB,CAAA;AAAA"
+}
