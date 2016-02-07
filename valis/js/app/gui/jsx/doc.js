@@ -110,7 +110,8 @@ define(['react', 'react-dom', 'jquery-ui', 'jquery', 'app/gui/jsx/patch', 'app/v
 
   var render = function render(model) {
     $('#splash-loading').hide();
-    ReactDOM.render(React.createElement(Doc, { patchModel: model }), document.getElementById('doc'));
+    var doc = ReactDOM.render(React.createElement(Doc, { patchModel: model }), document.getElementById('doc'));
+    return doc;
   };
 
   return {
