@@ -34,10 +34,10 @@ define(['lodash', 'app/vobjects/vobject'], function (_, vobject) {
 
       var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ADSREnvelope).call(this, options, attack, decay, sustain, release));
 
-      _this.attack = parseFloat(attack);
-      _this.decay = parseFloat(decay);
+      _this.attack = Math.max(0.01, parseFloat(attack));
+      _this.decay = Math.max(0.01, parseFloat(decay));
       _this.sustain = parseFloat(sustain);
-      _this.release = parseFloat(release);
+      _this.release = Math.max(0.01, parseFloat(release));
       _this._triggerOn = null;
       _this._triggerOff = null;
       _this._ptr = 0;

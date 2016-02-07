@@ -309,7 +309,6 @@ define(['lodash'], function (_) {
     }, {
       key: 'addDedge',
       value: function addDedge(from, fromOutput, to, toInput) {
-        console.log('addDedge ' + from.id + ' ' + fromOutput + ' ' + to.id + ' ' + toInput);
         if (!(from.id in this.dedges)) {
           this.dedges[from.id] = {};
         }
@@ -330,7 +329,6 @@ define(['lodash'], function (_) {
     }, {
       key: 'removeDedge',
       value: function removeDedge(from, fromOutput, to, toInput) {
-        console.log('removeDedge ' + from.id + ' ' + fromOutput + ' ' + to.id + ' ' + toInput);
         var edges = this.dedges[from.id][fromOutput];
         for (var i = 0; i < edges.length; i++) {
           if (edges[i].from === from && edges[i].fromOutput === fromOutput && edges[i].to === to && edges[i].toInput === toInput) {
