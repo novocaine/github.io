@@ -17,7 +17,7 @@ define(['app/vobjects/vobject', 'app/util'], function (vobject, util) {
 
       var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BinaryOp).call(this, options, operand));
 
-      _this.operand = operand;
+      _this.operand = operand || 0;
       return _this;
     }
 
@@ -57,7 +57,7 @@ define(['app/vobjects/vobject', 'app/util'], function (vobject, util) {
           scalar = inputs[0];
         } else if (firstIsAa) {
           aa = inputs[0];
-          scalar = inputs[1] || 0;
+          scalar = inputs[1];
           if (scalar === undefined) {
             scalar = this.operand;
             if (scalar === undefined) {
