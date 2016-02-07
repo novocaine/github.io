@@ -1,0 +1,49 @@
+.toolbar
+{
+    border-bottom: 1px solid #ccc;
+    padding: 1em;
+}
+
+.palette
+{
+    /* font-family: "Inconsolata"; */
+    display: inline;
+    padding-left: 0;
+}
+
+.palette li
+{
+    display: inline;
+    list-style: none;
+    cursor: pointer;
+    margin-right: 3ex;
+}
+
+.patch
+{
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    height: 500px;
+}
+
+.patch svg
+{
+    width: 100%;
+    height: 100%;
+}
+
+.dedge
+{
+    cursor: pointer;
+    stroke-width: 3;
+    stroke: #ccc;
+}
+
+button.enable-audio {
+    float: right;
+    margin-right: 0.5em;
+}
+
+button.to-json {
+    float: right;
+}

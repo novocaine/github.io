@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../www/js/app/console.js"],"names":[],"mappings":";;AAAA,OAAO,EAAP,EAAW,YAAM;AACf,SAAO;;AAEL,SAAK,QAAQ,GAAR;GAFP,CADe;CAAN,CAAX","file":"console.js","sourcesContent":["define([], () => {\n  return {\n    // XXX: for now\n    log: console.log\n  };\n});\n"]}
