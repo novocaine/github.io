@@ -67,16 +67,31 @@
         bottom: 10%;
       }
 
+      #more-holder {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        bottom: 25%;
+      }
+
       .btn {
         background-color: #28ACEE;
       }  
+
+      #more-button {
+        position: relative;
+        top: 30%;
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
     <video id="videoPlayer" autoplay></video>
+    <div id="more-holder">
+      <a id="more-button" onclick="more(this)" style="display: none">Give me more examples</a>
+    </div>
     <div id="button-holder">
-      <button type="button" class="btn btn-primary" id="next-button" onclick="nextGroup(this)" >Next</button>
-      <button type="button" class="btn" id="more-button" onclick="more(this)" style="display: none">More</button>
+      <button type="button" class="btn btn-primary" id="next-button" onclick="nextGroup(this)" >Got it, Next</button>
       <button type="button" class="btn btn-primary" id="done-button" onclick="done(this)" style="display: none">Done</button>
     </div>
   </body>
