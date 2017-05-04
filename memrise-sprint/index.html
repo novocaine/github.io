@@ -3,6 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript">
       if (document.location.hash.length > 1) {
         var videos = JSON.parse(document.location.hash.substring(1));
@@ -51,7 +52,11 @@
 
       var done = function() {
         Android.onFinished();
-      }  
+      }
+
+      var close = function() {
+        Android.onClose();
+      }
 
     </script>
     <style type="text/css">
@@ -83,9 +88,16 @@
         top: 30%;
         text-decoration: underline;
       }
+
+      #close {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
     </style>
   </head>
   <body>
+    <a href="#" id="close"><i class="material-icons">close</i></a>
     <video id="videoPlayer" autoplay></video>
     <div id="more-holder">
       <a id="more-button" onclick="more(this)" style="display: none">Give me more examples</a>
