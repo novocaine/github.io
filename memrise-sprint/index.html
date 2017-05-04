@@ -1,0 +1,72 @@
+<DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script type="text/javascript">
+      var videos = JSON.parse(document.location.hash.substring(1)); // [["test2.mp4", "test.mp4"], ["test.mp4"]];
+      var currentGroup = 0;
+      var currentVideo = 0;
+
+      window.onload = function() {
+        videoPlayer = document.getElementById("videoPlayer");
+        moreButton = document.getElementById("more-button");
+        nextButton = document.getElementById("next-button");
+        doneButton = document.getElementById("done-button");
+        videoPlayer.addEventListener("ended", function() {        
+          if (currentVideo !== videos[currentGroup].length - 1) {
+            moreButton.style.display = "inline-block";
+          }
+        });
+        videoPlayer.src = videos[0][0];
+      };
+
+      var playVideo = function() {
+        videoPlayer.src = videos[currentGroup][currentVideo];
+
+        if (currentGroup === videos.length - 1) {
+          nextButton.style.display = "none";
+          doneButton.style.display = "inline-block";
+        }
+        
+        moreButton.style.display = "none";
+      }  
+
+      var nextGroup = function(e) {
+        moreButton.style.display = "none";
+        currentGroup += 1;
+        currentVideo = 0;
+        playVideo();
+      }
+
+      var more = function(e) {
+        currentVideo += 1;
+        playVideo();
+      }
+
+      var done = function() {
+      }  
+
+    </script>
+    <style type="text/css">
+      #videoPlayer {
+        width: 100vw;
+        height: 100vh;
+      }
+
+      #button-holder {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        bottom: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="videoPlayer" autoplay></video>
+    <div id="button-holder">
+      <button type="button" class="btn btn-primary" id="next-button" onclick="nextGroup(this)" >Next</button>
+      <button type="button" class="btn" id="more-button" onclick="more(this)" style="display: none">More</button>
+      <button type="button" class="btn btn-primary" id="done-button" onclick="done(this)" style="display: none">Done</button>
+    </div>
+  </body>
+</html>
