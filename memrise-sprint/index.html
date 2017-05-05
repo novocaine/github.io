@@ -15,11 +15,20 @@
       var currentVideo = 0;
 
       window.onload = function() {
-        videoPlayer = document.getElementById("videoPlayer");
         moreButton = document.getElementById("more-button");
         nextButton = document.getElementById("next-button");
         doneButton = document.getElementById("done-button");
 
+        var player = getVideoPlayer();
+        initVideoPlayer(player);
+        player.src = videos[0][0];
+      };
+
+      var getVideoPlayer = function() {
+        return document.getElementById("video-player");
+      };
+
+      var initVideoPlayer = function(videoPlayer) {
         videoPlayer.addEventListener("ended", function() {        
           if (currentGroup === videos.length - 1) {
             doneButton.style.display = "inline-block";
@@ -40,9 +49,7 @@
         videoPlayer.addEventListener("click", function() {
           showNext();
         });
-
-        videoPlayer.src = videos[0][0];
-      };
+      }
 
       var showNext = function(asSkip) {
         nextButton.style.display = "inline-block";
@@ -56,9 +63,18 @@
       };
 
       var playVideo = function() {
-        videoPlayer.src = videos[currentGroup][currentVideo];
-        nextButton.style.display = "none";
+        var newPlayer = document.createElement("video");
+        newPlayer.autoplay = true;
+        newPlayer.src = videos[currentGroup][currentVideo];
+        newPlayer.id = "video-player";
+        newPlayer.addEventListener("canplay", function() {
+          initVideoPlayer(newPlayer);
+          var holder = document.getElementById("video-holder");
+          holder.removeChild(getVideoPlayer());
+          holder.appendChild(newPlayer);
+        });
 
+        nextButton.style.display = "none";
         moreButton.style.display = "none";
       }  
 
@@ -88,7 +104,7 @@
         background-color: #44376F;
       }
 
-      #videoPlayer {
+      video {
         width: 100vw;
         height: 100vh;
         background-color: #44376F;
@@ -132,7 +148,9 @@
   </head>
   <body>
     <a href="#" id="close"><i class="material-icons">close</i></a>
-    <video id="videoPlayer" autoplay></video>
+    <div id="video-holder">
+        <video id="video-player" autoplay preload="auto"></video>
+    </div>
     <div id="button-holder">
       <div>
         <button type="button" class="btn btn-primary" id="more-button" onclick="more(this)" style="display: none">Give me more examples</button>
