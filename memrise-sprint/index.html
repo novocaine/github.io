@@ -19,22 +19,46 @@
         moreButton = document.getElementById("more-button");
         nextButton = document.getElementById("next-button");
         doneButton = document.getElementById("done-button");
+
         videoPlayer.addEventListener("ended", function() {        
+          if (currentGroup === videos.length - 1) {
+            doneButton.style.display = "inline-block";
+          }
+        
           if (currentVideo !== videos[currentGroup].length - 1) {
             moreButton.style.display = "inline-block";
+            if (currentGroup !== videos.length - 1) {
+              showNext(true);
+            }
+          } else {
+            if (currentGroup !== videos.length - 1) {
+              showNext(false);
+            }
           }
         });
+
+        videoPlayer.addEventListener("click", function() {
+          showNext();
+        });
+
         videoPlayer.src = videos[0][0];
+      };
+
+      var showNext = function(asSkip) {
+        nextButton.style.display = "inline-block";
+        if (asSkip) {
+          nextButton.innerHTML = "I get it, move on";
+          nextButton.classList.add("weak-button");
+        } else {
+          nextButton.innerHTML = "Next";
+          nextButton.classList.remove("weak-button");
+        }
       };
 
       var playVideo = function() {
         videoPlayer.src = videos[currentGroup][currentVideo];
+        nextButton.style.display = "none";
 
-        if (currentGroup === videos.length - 1) {
-          nextButton.style.display = "none";
-          doneButton.style.display = "inline-block";
-        }
-        
         moreButton.style.display = "none";
       }  
 
@@ -61,13 +85,13 @@
     </script>
     <style type="text/css">
       body {
-        background-color: black;
+        background-color: #44376F;
       }
 
       #videoPlayer {
         width: 100vw;
         height: 100vh;
-        background-color: black;
+        background-color: #44376F;
       }
 
       #button-holder {
@@ -91,7 +115,7 @@
       #more-button {
         position: relative;
         top: 30%;
-        text-decoration: underline;
+        margin-bottom: 1em;
       }
 
       #close {
@@ -99,17 +123,25 @@
         top: 10px;
         left: 10px;
       }
+
+      .weak-button {
+        background-color: #665A91;
+      }
     </style>
   </head>
   <body>
     <a href="#" id="close"><i class="material-icons">close</i></a>
     <video id="videoPlayer" autoplay></video>
-    <div id="more-holder">
-      <a id="more-button" onclick="more(this)" style="display: none">Give me more examples</a>
-    </div>
     <div id="button-holder">
-      <button type="button" class="btn btn-primary" id="next-button" onclick="nextGroup(this)" >Got it, Next</button>
-      <button type="button" class="btn btn-primary" id="done-button" onclick="done(this)" style="display: none">Done</button>
+      <div>
+        <button type="button" class="btn btn-primary" id="more-button" onclick="more(this)" style="display: none">Give me more examples</button>
+      <//div>
+      <div>
+        <button type="button" class="btn btn-primary" id="next-button" onclick="nextGroup(this)" style="display: none" >Next</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" id="done-button" onclick="done(this)" style="display: none">Let's try it out</button>
+      </div>
     </div>
   </body>
 </html>
